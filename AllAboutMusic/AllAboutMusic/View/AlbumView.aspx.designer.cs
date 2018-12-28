@@ -40,6 +40,15 @@ namespace AllAboutMusic.View {
         protected global::System.Web.UI.WebControls.Button GetArtist;
         
         /// <summary>
+        /// ArtistReset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ArtistReset;
+        
+        /// <summary>
         /// SongName control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace AllAboutMusic.View {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button GetLyrics;
+        
+        /// <summary>
+        /// SongReset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SongReset;
         
         /// <summary>
         /// ShowLyrics control.

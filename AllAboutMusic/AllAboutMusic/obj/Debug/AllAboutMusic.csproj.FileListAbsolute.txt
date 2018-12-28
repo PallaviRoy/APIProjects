@@ -28,3 +28,13 @@ C:\Users\Pallavi\Desktop\Sem1\Flex-2\IS-7024-XML-Webservices\Project\FinalAssign
 C:\Users\Pallavi\Desktop\Sem1\Flex-2\IS-7024-XML-Webservices\Project\FinalAssignment\AllAboutMusic\AllAboutMusic\obj\Debug\AllAboutMusic.csproj.CopyComplete
 C:\Users\Pallavi\Desktop\Sem1\Flex-2\IS-7024-XML-Webservices\Project\FinalAssignment\AllAboutMusic\AllAboutMusic\obj\Debug\AllAboutMusic.dll
 C:\Users\Pallavi\Desktop\Sem1\Flex-2\IS-7024-XML-Webservices\Project\FinalAssignment\AllAboutMusic\AllAboutMusic\obj\Debug\AllAboutMusic.pdb
+C:\Users\Pallavi\Desktop\Sem1\Projects\APIProjects\AllAboutMusic\AllAboutMusic\bin\AllAboutMusic.dll.config
+C:\Users\Pallavi\Desktop\Sem1\Projects\APIProjects\AllAboutMusic\AllAboutMusic\bin\AllAboutMusic.dll
+C:\Users\Pallavi\Desktop\Sem1\Projects\APIProjects\AllAboutMusic\AllAboutMusic\bin\AllAboutMusic.pdb
+C:\Users\Pallavi\Desktop\Sem1\Projects\APIProjects\AllAboutMusic\AllAboutMusic\bin\Newtonsoft.Json.dll
+C:\Users\Pallavi\Desktop\Sem1\Projects\APIProjects\AllAboutMusic\AllAboutMusic\bin\Newtonsoft.Json.xml
+C:\Users\Pallavi\Desktop\Sem1\Projects\APIProjects\AllAboutMusic\AllAboutMusic\obj\Debug\AllAboutMusic.csprojAssemblyReference.cache
+C:\Users\Pallavi\Desktop\Sem1\Projects\APIProjects\AllAboutMusic\AllAboutMusic\obj\Debug\AllAboutMusic.csproj.CoreCompileInputs.cache
+C:\Users\Pallavi\Desktop\Sem1\Projects\APIProjects\AllAboutMusic\AllAboutMusic\obj\Debug\AllAboutMusic.csproj.CopyComplete
+C:\Users\Pallavi\Desktop\Sem1\Projects\APIProjects\AllAboutMusic\AllAboutMusic\obj\Debug\AllAboutMusic.dll
+C:\Users\Pallavi\Desktop\Sem1\Projects\APIProjects\AllAboutMusic\AllAboutMusic\obj\Debug\AllAboutMusic.pdb

@@ -5,6 +5,9 @@ using System.Web;
 
 namespace AllAboutMusic.Model
 {
+    /// <summary>Class <c>Album</c> models an album with it's most useful 
+    /// attributes.</summary>
+    ///
     public class Album
     {
         private string album_id;

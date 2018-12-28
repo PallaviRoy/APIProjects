@@ -211,10 +211,8 @@ table {
     }
 
     #footer {
-        bottom: 0;
         width: 100%;
         position: absolute;
-        height: 60px;
         background-color: #000000;
         text-align: center;
         color: #FFFF00;

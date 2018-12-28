@@ -5,6 +5,9 @@ using System.Web;
 
 namespace AllAboutMusic.Model
 {
+    /// <summary>Class <c>Artist</c> models an artist with it's most useful 
+    /// attributes.</summary>
+    ///
     public class Artist
     {
         private int artist_id;
@@ -46,18 +49,30 @@ namespace AllAboutMusic.Model
         public string Updated_time { get => updated_time; set => updated_time = value; }
     }
 
+
+    /// <summary>Class <c>Primary Genres</c> models an primary genres with it's most useful 
+    /// attributes.</summary>
+    ///
     public class PrimaryGenres
     {
-        public List<object> music_genre { get; set; }
+        public List<object> Musicgenre { get; set; }
     }
 
+
+    /// <summary>Class <c>Secondary Genres</c> models an Secondary Genres with it's most useful 
+    /// attributes.</summary>
+    ///
     public class SecondaryGenres
     {
-        public List<object> music_genre { get; set; }
+        public List<object> Musicgenre { get; set; }
     }
 
+
+    /// <summary>Class <c>ArtistCredits</c> models credits of an artist 
+    /// </summary>
+    ///
     public class ArtistCredits
     {
-        public List<object> artist { get; set; }
+        public List<object> Artist { get; set; }
     }
 }

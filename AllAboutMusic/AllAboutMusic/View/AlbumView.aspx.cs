@@ -6,58 +6,143 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using AllAboutMusic.Model;
+using System.Drawing;
 
 namespace AllAboutMusic.View
 {
     public partial class AlbumView : System.Web.UI.Page
     {
-        RestClient client = new RestClient();
+        private RestClient client = new RestClient();
 
         static string domain = "https://musixmatchcom-musixmatch.p.mashape.com/wsr/1.1";
 
+        static string getArtistIDURI = "/artist.search?q_artist=artistName&page_size=5";
         static string getAlbumIdURI = "/artist.albums.get?artist_id=artistID&s_release_date=desc&g_album_name=1";
         static string getTrackIdURI = "/album.tracks.get?album_id=albumID";
         static string getLyricsURI = "/matcher.lyrics.get?q_artist=artistName&q_track=trackName";
 
-        static string output = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ShowLyrics.Visible = false;
+        }
 
+        public void GetArtistID(string artist_name)
+        {
+            string output = string.Empty;
+            List<Artist> artlistList = null;
+            ShowLyrics.Visible = false;
+            clearRepeater(artistrep);
+
+            client.endpoint = domain + getArtistIDURI.Replace("artistName", Artistname.Text);
+
+            try
+            {
+                output = client.makeRequest();
+
+                if (!string.IsNullOrEmpty(output))
+                {
+                    artlistList = JsonConvert.DeserializeObject<List<Artist>>(output);
+
+                    if (artlistList.Count > 0)
+                    {
+                        artistrep.DataSource = artlistList;
+                        artistrep.DataBind();
+                    }
+                    
+                    clearRepeater(albumrep);
+                    clearRepeater(trackrep);
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                ShowLyrics.Visible = true;
+                ShowLyrics.Text = "Error Ocurred!"+ ex.Message;
+                ShowLyrics.ForeColor = Color.Red;
+                ShowLyrics.Font.Bold = true;
+            }
         }
 
         protected void GetAlbumsForArtist(string artistId)
         {
-            client.endpoint = domain + getAlbumIdURI.Replace("artistID", artistId);
-            output = client.makeRequest();
-            List<Album> Albums = null;
+            string output = string.Empty;
+            clearRepeater(albumrep);
+            ShowLyrics.Visible = false;
 
-            if (output != null)
+            client.endpoint = domain + getAlbumIdURI.Replace("artistID", artistId);
+
+            try
             {
-                Albums = JsonConvert.DeserializeObject<List<Album>>(output);
-                albumrep.DataSource = Albums;
-                albumrep.DataBind();
+                output = client.makeRequest();
+                List<Album> Albums = null;
+
+                if (!string.IsNullOrEmpty(output))
+                {
+                    Albums = JsonConvert.DeserializeObject<List<Album>>(output);
+                    if (Albums.Count > 0)
+                    {
+                        albumrep.DataSource = Albums;
+                        albumrep.DataBind();
+                    }
+
+                    clearRepeater(trackrep);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                ShowLyrics.Visible = true;
+                ShowLyrics.Text = "Error Ocurred!"+ex.Message;
+                ShowLyrics.ForeColor = Color.Red;
+                ShowLyrics.Font.Bold = true;
             }
         }
 
-        protected void GetTracksForAlbum(string albumId) {
-            
+        protected void GetTracksForAlbum(string albumId)
+        {
+
+            string output = string.Empty;
+            clearRepeater(trackrep);
+            ShowLyrics.Visible = false;
+
             List<Track> Tracks = null;
             client.endpoint = domain + getTrackIdURI.Replace("albumID", albumId);
-            output = client.makeRequest();
-            if (output != null)
+
+            try
             {
-                Tracks = JsonConvert.DeserializeObject<List<Track>>(output);
-                trackrep.DataSource = Tracks;
-                trackrep.DataBind();
+                output = client.makeRequest();
+                if (!string.IsNullOrEmpty(output))
+                {
+                    Tracks = JsonConvert.DeserializeObject<List<Track>>(output);
+
+                    if (Tracks.Count > 0)
+                    {
+                        trackrep.DataSource = Tracks;
+                        trackrep.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                ShowLyrics.Visible = true;
+                ShowLyrics.Text = "Error Ocurred!" + ex.Message;
+                ShowLyrics.ForeColor = Color.Red;
+                ShowLyrics.Font.Bold = true;
+
             }
         }
 
-        
+
         protected void GetLyricsForTrack(string artistName, string songName)
         {
-            client.endpoint = domain + getLyricsURI.Replace("artistName", artistName).Replace("trackName", songName);
-            if (songName==null && artistName!=null)
+            string output = string.Empty;
+            ShowLyrics.Visible = true;
+
+            if (!string.IsNullOrEmpty(output))
             {
                 ShowLyrics.Text = "Please enter Song or Click Search !";
                 return;
@@ -73,29 +158,37 @@ namespace AllAboutMusic.View
                 return;
             }
 
-            Console.WriteLine(client.endpoint);
-            output = client.makeRequest();
+            client.endpoint = domain + getLyricsURI.Replace("artistName", artistName).Replace("trackName", songName);
 
-            if (output != null)
+            try
             {
-                var LyricsDis = JsonConvert.DeserializeObject<Lyrics>(output);
-                ShowLyrics.Text = LyricsDis.Lyrics_body;
+                output = client.makeRequest();
 
+                if (!string.IsNullOrEmpty(output))
+                {
+                    var LyricsDis = JsonConvert.DeserializeObject<Lyric>(output);
+
+                    string song_artist = songName + " by " + artistName + "\n\n";
+                    ShowLyrics.Text = song_artist + LyricsDis.Lyrics_body;
+
+                }
+                else
+                {
+                    ShowLyrics.Text = "No Records Found!";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ShowLyrics.Text = "No Records Found!";
+                Console.WriteLine(ex.ToString());
+                ShowLyrics.Text = "Error Ocurred!";
+                ShowLyrics.ForeColor = Color.Red;
+                ShowLyrics.Font.Bold = true;
             }
         }
 
         protected void GetArtist_Click(object sender, EventArgs e)
         {
-            ArtistView av = new ArtistView();
-
-            List<Artist> artistList = av.GetArtistID(Artistname.Text);
-
-            artistrep.DataSource = artistList;
-            artistrep.DataBind();
+            GetArtistID(Artistname.Text);
         }
 
         protected void artistrep_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -131,6 +224,26 @@ namespace AllAboutMusic.View
         protected void GetLyrics_Click(object sender, EventArgs e)
         {
             GetLyricsForTrack(Artistname.Text, SongName.Text);
+        }
+
+        protected void clearRepeater(Repeater rep)
+        {
+            rep.DataSource = null;
+            rep.DataSourceID = null;
+            rep.DataBind();
+        }
+
+        protected void ArtistReset_Click(object sender, EventArgs e)
+        {
+            Artistname.Text = "";
+            clearRepeater(artistrep);
+            clearRepeater(albumrep);
+            clearRepeater(trackrep);
+        }
+
+        protected void SongReset_Click(object sender, EventArgs e)
+        {
+            SongName.Text = "";
         }
     }
 }
