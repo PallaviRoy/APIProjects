@@ -1,4 +1,4 @@
-# APIProjects
+# AllAboutMusic - APIProjects
 Implementing and consuming a variety of webAPIs
 
 # Find Lyrics of Track
