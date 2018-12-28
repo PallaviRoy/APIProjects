@@ -1,0 +1,228 @@
+﻿#name {
+    position: relative;
+    bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+}
+
+table {
+    color: white;
+}
+
+.my-nav {
+    margin: 0 auto;
+    max-width: 1000px;
+    background: #000000;
+}
+
+    .my-nav ul {
+        justify-content: space-around;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        border: 1px solid white;
+        border-radius: 5px;
+        clear: right;
+    }
+
+    .my-nav li {
+        text-align: center;
+        flex: 1;
+    }
+
+
+    .my-nav a {
+        color: #fff;
+        display: block;
+        padding: 20px 5px;
+    }
+
+
+    .my-nav li:hover {
+        background: rgba(255,255,0);
+    }
+
+        .my-nav li:hover a {
+            color: #000;
+            font-weight: bold;
+        }
+
+    .my-nav li:active {
+        background: rgba(255,255,0);
+    }
+
+    .my-nav ul.open {
+        display: flex;
+    }
+
+
+
+
+/*  end of button*/
+
+
+
+
+
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 400px) {
+
+    .menu-btn {
+        visibility: visible;
+    }
+
+    .my-nav li {
+        flex-basis: 100%;
+        border-bottom: 1px solid white;
+    }
+
+    .my-nav ul {
+        border: none;
+        display: none;
+    }
+
+    .logo-div {
+        -webkit-box-shadow: 0px 1px 1px -1px rgba(0,0,0,0.67);
+        -moz-box-shadow: 0px 1px 1px -1px rgba(0,0,0,0.67);
+        box-shadow: 0px 1px 1px -1px rgba(0,0,0,0.67);
+    }
+}
+
+@media only screen and (min-width: 401px) and (max-width : 590px) {
+    .my-nav li {
+        flex-basis: 50%;
+    }
+
+    li:last-child {
+        border-top: 1px solid white;
+    }
+}
+
+
+@media only screen and (min-width: 591px) {
+
+    li:last-child {
+        border-left: 1px solid white;
+    }
+
+    /* external css: flickity.css */
+    * {
+        box-sizing: border-box;
+    }
+
+    .carousel {
+        background: black;
+    }
+
+    .carousel-cell {
+        width: 70%;
+        height: 200px;
+        /* flex-box, center image in cell */
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+        .carousel-cell img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            /* dim unselected */
+            opacity: 0.7;
+            -webkit-transform: scale(0.85);
+            transform: scale(0.85);
+            -webkit-filter: blur(5px);
+            filter: blur(5px);
+            -webkit-transition: opacity 0.3s, -webkit-transform 0.3s, transform 0.3s, -webkit-filter 0.3s, filter 0.3s;
+            transition: opacity 0.3s, transform 0.3s, filter 0.3s;
+        }
+
+        /* brighten selected image */
+        .carousel-cell.is-selected img {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-filter: none;
+            filter: none;
+        }
+
+    @media screen and ( min-width: 768px ) {
+        .carousel-cell {
+            height: 400px;
+        }
+    }
+
+    @media screen and ( min-width: 960px ) {
+        .carousel-cell {
+            width: 60%;
+        }
+    }
+
+    /* buttons, no circle */
+    .flickity-prev-next-button {
+        width: 60px;
+        height: 60px;
+        background: transparent;
+        opacity: 0.6;
+    }
+
+        .flickity-prev-next-button:hover {
+            background: transparent;
+            opacity: 1;
+        }
+        /* arrow color */
+        .flickity-prev-next-button .arrow {
+            fill: white;
+        }
+
+        .flickity-prev-next-button.no-svg {
+            color: white;
+        }
+        /* closer to edge */
+        .flickity-prev-next-button.previous {
+            left: 0;
+        }
+
+        .flickity-prev-next-button.next {
+            right: 0;
+        }
+        /* hide disabled button */
+        .flickity-prev-next-button:disabled {
+            display: none;
+        }
+
+    h1 {
+        color: yellow;
+    }
+
+    #footer {
+        bottom: 0;
+        width: 100%;
+        position: absolute;
+        height: 60px;
+        background-color: #000000;
+        text-align: center;
+        color: #FFFF00;
+        font-weight: bold
+    }
+
+    .footer-block {
+        margin: 20px 0;
+    }
+}
+    
